@@ -94,24 +94,24 @@ let netTotal = 0;
 let averageChange = 0;
 let increase = 0;
 let decrease = 0;
+let incDate = null;
+let decDate = null;
 
 //total months
 months = (finances.length);
-console.log("number of months in period: " + months);
 
 //loop to calculate net total, greatest increase and greatest decrease
 for (let i = 0; i < finances.length; i++) {
     netTotal = netTotal + finances[i][1];
     if (finances[i][1] > increase) {
         increase = finances[i][1];
+        incDate = finances[i][0];
     }
     if (finances[i][1] < decrease) {
         decrease = finances[i][1];
+        decDate = finances[i][0];
     }
 }
-console.log("total = " + netTotal);
-console.log ("greatest: " + increase);
-console.log("lowest: " + decrease);
 
 // loop to find differences and calculate average
 let diff = 0;
@@ -124,4 +124,11 @@ for (i = 0; i < finances.length; i++) {
     averageChange = (totalDiff / finances.length);
 }
 
-console.log("average diff = " + averageChange.toFixed(2));
+//output
+console.log("Financial Analysis");
+console.log("------------------------------------");
+console.log("Total months: " + months);
+console.log("Net total: $" + netTotal);
+console.log("Average change: $" + averageChange.toFixed(2));
+console.log("Greatest increast in profits: " + incDate + " ($" + increase + ")");
+console.log("Greatest decrease in profits: " + decDate + " ($" + decrease + ")");
