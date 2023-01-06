@@ -99,9 +99,8 @@ let decrease = 0;
 months = (finances.length);
 console.log("number of months in period: " + months);
 
-//Net total, greatest increase and greatest decrease
+//loop to calculate net total, greatest increase and greatest decrease
 for (let i = 0; i < finances.length; i++) {
-    // console.log(finances[i][1]); //no comma between [][]
     netTotal = netTotal + finances[i][1];
     if (finances[i][1] > increase) {
         increase = finances[i][1];
@@ -109,8 +108,20 @@ for (let i = 0; i < finances.length; i++) {
     if (finances[i][1] < decrease) {
         decrease = finances[i][1];
     }
-    // console.log("total = " + total);
 }
 console.log("total = " + netTotal);
 console.log ("greatest: " + increase);
 console.log("lowest: " + decrease);
+
+// loop to find differences and calculate average
+let diff = 0;
+let totalDiff = 0;
+for (i = 0; i < finances.length; i++) {
+    if (i) {
+        diff = (finances[i][1] - finances[i-1][1])
+    }
+    totalDiff = (totalDiff + diff);
+    averageChange = (totalDiff / finances.length);
+}
+
+console.log("average diff = " + averageChange.toFixed(2));
