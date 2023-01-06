@@ -86,3 +86,31 @@ var finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
+
+
+//initialising variables
+let months = 0;
+let netTotal = 0;
+let averageChange = 0;
+let increase = 0;
+let decrease = 0;
+
+//total months
+months = (finances.length);
+console.log("number of months in period: " + months);
+
+//Net total, greatest increase and greatest decrease
+for (let i = 0; i < finances.length; i++) {
+    // console.log(finances[i][1]); //no comma between [][]
+    netTotal = netTotal + finances[i][1];
+    if (finances[i][1] > increase) {
+        increase = finances[i][1];
+    }
+    if (finances[i][1] < decrease) {
+        decrease = finances[i][1];
+    }
+    // console.log("total = " + total);
+}
+console.log("total = " + netTotal);
+console.log ("greatest: " + increase);
+console.log("lowest: " + decrease);
