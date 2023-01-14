@@ -88,24 +88,27 @@ var finances = [
 ];
 
 
-//initialising variables
+// Initialising variables
 let months = 0;
 let netTotal = 0;
 let change = 0;
 let totalChange = 0;
 let avChange = 0;
+let greatestChange = 0;
+let lowestChange = 0;
+let profitMonth = null;
+let lossesMonth = null;
 
 
-
-//total months
+// Total months
 months = (finances.length);
 
-//loop to calculate net total
+// Loop to calculate net total
 for (let i = 0; i < finances.length; i++) {
     netTotal = netTotal + finances[i][1];
 }
 
-// loop to find differences and create array
+// Loop to find changes and create array with values of changes
 let changeArray = new Array(85);
 
 for (i = 0; i < finances.length; i++) {
@@ -116,21 +119,37 @@ for (i = 0; i < finances.length; i++) {
 }
 
 
-//loop to calculate average from changes array
+// Loop to calculate average from changes array
 for (i = 0; i < changeArray.length; i++) {
     totalChange = (totalChange + changeArray[i]);
     //and for average:
     avChange = (totalChange / changeArray.length);
 };
 
+// Loop to get biggest profit and loss changes, and select corresponding months from finances array
+for (i = 0; i < changeArray.length; i++) {
+    if (changeArray[i] > greatestChange) {
+        greatestChange = changeArray[i];
+    };
+    if (changeArray[i] < lowestChange) {
+        lowestChange = changeArray[i];
+    };
+    if (i) {
+        if (finances[i][1] - finances[i - 1][1] === greatestChange) {
+            profitMonth = finances[i][0];
+        }
+        if (finances[i][1] - finances[i - 1][1] === lowestChange) {
+            lossesMonth = finances[i][0];
+        }
+    }
+};
 
 
-
-//output
+// Output
 console.log("Financial Analysis");
 console.log("------------------------------------");
 console.log("Total months: " + months);
 console.log("Net total: $" + netTotal);
 console.log("Average change: $" + avChange.toFixed(2));
-console.log("Greatest increast in profits: " + " ($" + ")");
-console.log("Greatest decrease in profits: " + " ($" + ")");
+console.log("Greatest increast in profits: " + profitMonth + " ($" + greatestChange + ")");
+console.log("Greatest decrease in profits: " + lossesMonth + " ($" + lowestChange + ")");
