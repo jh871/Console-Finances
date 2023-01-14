@@ -91,44 +91,46 @@ var finances = [
 //initialising variables
 let months = 0;
 let netTotal = 0;
-let averageChange = 0;
-let increase = 0;
-let decrease = 0;
-let incDate = null;
-let decDate = null;
+let change = 0;
+let totalChange = 0;
+let avChange = 0;
+
+
 
 //total months
 months = (finances.length);
 
-//loop to calculate net total, greatest increase and greatest decrease
+//loop to calculate net total
 for (let i = 0; i < finances.length; i++) {
     netTotal = netTotal + finances[i][1];
-    if (finances[i][1] > increase) {
-        increase = finances[i][1];
-        incDate = finances[i][0];
-    }
-    if (finances[i][1] < decrease) {
-        decrease = finances[i][1];
-        decDate = finances[i][0];
+}
+
+// loop to find differences and create array
+let changeArray = new Array(85);
+
+for (i = 0; i < finances.length; i++) {
+    if (i) {
+        change = (finances[i][1] - finances[i-1][1])
+        changeArray[i - 1] = change; 
     }
 }
 
-// loop to find differences and calculate average
-let diff = 0;
-let totalDiff = 0;
-for (i = 0; i < finances.length; i++) {
-    if (i) {
-        diff = (finances[i][1] - finances[i-1][1])
-    }
-    totalDiff = (totalDiff + diff);
-    averageChange = (totalDiff / finances.length);
-}
+
+//loop to calculate average from changes array
+for (i = 0; i < changeArray.length; i++) {
+    totalChange = (totalChange + changeArray[i]);
+    //and for average:
+    avChange = (totalChange / changeArray.length);
+};
+
+
+
 
 //output
 console.log("Financial Analysis");
 console.log("------------------------------------");
 console.log("Total months: " + months);
 console.log("Net total: $" + netTotal);
-console.log("Average change: $" + averageChange.toFixed(2));
-console.log("Greatest increast in profits: " + incDate + " ($" + increase + ")");
-console.log("Greatest decrease in profits: " + decDate + " ($" + decrease + ")");
+console.log("Average change: $" + avChange.toFixed(2));
+console.log("Greatest increast in profits: " + " ($" + ")");
+console.log("Greatest decrease in profits: " + " ($" + ")");
