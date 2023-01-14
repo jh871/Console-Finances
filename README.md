@@ -6,9 +6,9 @@ The task included calculating:
 * number of months in the array
 * total sum of all financial data
 * the average change in profit/loss between months
-* the date that had the biggest increase in profit
-* the date with the biggest decrease in profit
-For the increase and decrease, I went with the highest and lowest numbers in the set.
+* the date with the greatest increase in profit 
+* the date with the  greatest losses in profit
+    * For the increase and decrease, I used the change in profit between months.
 
 ## Installation
 The financial analysis can be run by accessing the console in a browser. 
@@ -36,5 +36,5 @@ https://jh871.github.io/Console-Finances/
 https://github.com/jh871/Console-Finances
 
 ### Screenshot for deployed application
-![](FinancialAnalysisScreenshot.jpg)
+![Screenshot of colsole output of financial analysis](assets/FinancialAnalysisScreenshot2.png)
 
