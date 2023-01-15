@@ -36,5 +36,5 @@ https://jh871.github.io/Console-Finances/
 https://github.com/jh871/Console-Finances
 
 ### Screenshot for deployed application
-![Screenshot of colsole output of financial analysis](assets/FinancialAnalysisScreenshot2.png)
+![Screenshot of console output of financial analysis](assets/FinancialAnalysisScreenshot3.png)
 
